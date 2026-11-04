@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071426">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ATHLETIX AIコーチ">
+<title>ATHLETIX | AIコーチ</title>
+<style>
+:root{--bg:#061222;--panel:#0d2036;--panel2:#132b45;--line:#244765;--text:#f2f8ff;--muted:#9bb1c8;--cyan:#65dcff;--blue:#25aee8;--mint:#83e4c5;--shadow:0 14px 32px #0006}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -5%,#16476c 0,transparent 40%),linear-gradient(145deg,#061222,#08182b 60%,#061222);color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 calc(88px + env(safe-area-inset-bottom))}
+.app{max-width:760px;margin:auto;padding:20px 16px 28px}.top{display:flex;justify-content:space-between;align-items:center;margin:4px 0 22px}.brand{font-weight:900;font-size:24px;letter-spacing:.13em}.brand span{color:var(--cyan);text-shadow:0 0 15px #65dcff88}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--cyan);font-weight:800}.tag{font-size:10px;border:1px solid #2d7195;color:var(--cyan);background:#10324a;padding:5px 9px;border-radius:30px}
+h1{font-size:25px;line-height:1.25;margin:5px 0 8px}h2{font-size:17px;margin:0 0 10px}.muted{color:var(--muted)}.small{font-size:12px}.hero{padding:20px;border:1px solid #347394;border-radius:22px;background:linear-gradient(130deg,#143957,#0b2038 70%);box-shadow:0 0 28px #1aa9e522,var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #65dcff33;border-radius:50%;right:-85px;top:-90px;box-shadow:0 0 0 24px #65dcff0c,0 0 0 48px #65dcff08;pointer-events:none}.hero p{margin:0;color:#c7dced;max-width:520px}.section{margin-top:22px}.card{background:linear-gradient(145deg,#102943,#0a1b30);border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:var(--shadow)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature{padding:13px;border:1px solid #28516f;border-radius:14px;background:#0d263e}.feature b{display:block;margin:5px 0 2px}.ico{font-size:21px;color:var(--cyan)}.btn{border:1px solid #39799c;background:#123b57;color:var(--cyan);border-radius:11px;padding:10px 13px;font-weight:750;font-size:13px}.btn.primary{background:linear-gradient(135deg,#7be7ff,#31b8ed);color:#06192a;border:0;box-shadow:0 0 16px #36c5ff44}.btn:disabled{opacity:.45}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.field{display:grid;gap:5px;margin:10px 0}.field label{font-size:12px;color:#b9cde0}.field input,.field select,.field textarea{width:100%;background:#07172a;color:var(--text);border:1px solid #31536e;border-radius:10px;padding:11px;font:inherit}.field textarea{min-height:85px;resize:vertical}.videoBox{background:#030a13;border:1px dashed #42617c;border-radius:13px;overflow:hidden;min-height:150px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:8px}.videoBox video{width:100%;max-height:340px;object-fit:contain;background:#000}.videoGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.videoTitle{font-size:12px;color:#c7dced;margin:0 0 7px}.notice{background:#102d43;border:1px solid #286081;border-radius:12px;padding:12px;color:#c8e9f7;font-size:12px}.result{border-left:3px solid var(--cyan);padding:10px 12px;background:#0b2238;border-radius:0 10px 10px 0;margin-top:9px}.result b{color:#8de5ff}.tabs{position:fixed;bottom:0;left:0;right:0;background:#061426ed;backdrop-filter:blur(15px);border-top:1px solid #244765;padding:8px 10px calc(8px + env(safe-area-inset-bottom));z-index:5}.tabin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.tabs button{border:0;background:none;color:#9bb1c8;padding:7px 2px;border-radius:10px;font-size:10px}.tabs button span{display:block;font-size:18px}.tabs button.active{color:var(--cyan);background:#15334d}.pane{display:none}.pane.active{display:block}.hidden{display:none!important}ul{padding-left:19px;margin:7px 0}.foot{font-size:11px;color:#8da5bd;margin-top:12px}
+@media(max-width:390px){.brand{font-size:21px}.videoGrid{grid-template-columns:1fr}.grid{gap:8px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top"><div><div class="brand">ATHLE<span>TIX</span></div><div class="eyebrow">個人競技力サポートシステム</div></div><span class="tag">AI COACH β版</span></header>
+
+<section class="pane active" id="home">
+<div class="hero"><div class="eyebrow">FUTURE TRACK / COACHING</div><h1>競技力を、見える化する。</h1><p>動画・記録・大会予定・コンディションを整理して、次の一歩を考える陸上専用コーチ。</p></div>
+<div class="section"><h2>コーチ機能</h2><div class="grid">
+<div class="feature"><div class="ico">▣</div><b>動画フォーム分析</b><span class="small muted">自分の動きを確認</span></div>
+<div class="feature"><div class="ico">⇄</div><b>お手本と動画比較</b><span class="small muted">2本の動画を並べて再生</span></div>
+<div class="feature"><div class="ico">✦</div><b>技術アドバイス</b><span class="small muted">種目別の課題を整理</span></div>
+<div class="feature"><div class="ico">◷</div><b>大会逆算サポート</b><span class="small muted">大会までの準備を計画</span></div>
+</div></div>
+<div class="section card"><h2>はじめに</h2><p class="muted small">下のメニューから「動画分析」または「AIコーチ」を選んでね。まずは動画を読み込んで、動きを見比べるところから始めよう。</p><button class="btn primary" onclick="show('video')">動画分析を開く →</button></div>
+</section>
+
+<section class="pane" id="video">
+<div class="eyebrow">VIDEO LAB</div><h1>動画分析・比較</h1><p class="muted small">自分の動画と参考動画を読み込んで、同じ画面で確認できるよ。</p>
+<div class="section card">
+<h2>① 動画を読み込む</h2>
+<div class="videoGrid">
+<div><p class="videoTitle">自分の動画</p><label class="btn" for="myVideo">動画を選択</label><input id="myVideo" type="file" accept="video/*" class="hidden"><div class="videoBox" id="myBox" style="margin-top:8px">動画はまだ選択されていません</div></div>
+<div><p class="videoTitle">お手本・比較動画</p><label class="btn" for="refVideo">動画を選択</label><input id="refVideo" type="file" accept="video/*" class="hidden"><div class="videoBox" id="refBox" style="margin-top:8px">比較動画はまだ選択されていません</div></div>
+</div>
+<div class="row" style="margin-top:12px"><button class="btn primary" id="syncBtn" onclick="toggleBoth()">2本を同時に再生</button><button class="btn" onclick="resetVideos()">動画をリセット</button></div>
+</div>
+<div class="section card">
+<h2>② 分析したい種目・場面</h2>
+<div class="field"><label for="event">種目</label><select id="event"><option>100m</option><option>走幅跳</option><option>三段跳</option><option>その他</option></select></div>
+<div class="field"><label for="phase">見てほしい場面</label><select id="phase"><option>全体の動き</option><option>スタート・加速</option><option>中間疾走</option><option>ラスト局面</option><option>助走</option><option>踏切</option><option>空中動作・着地</option><option>ホップ・ステップ・ジャンプ</option></select></div>
+<div class="field"><label for="question">気になること（任意）</label><textarea id="question" placeholder="例：接地でブレーキがかかっている気がする／踏切前に減速する"></textarea></div>
+<div class="notice">現在は動画の読み込み・並べて再生する機能まで使える試作版です。動画の内容を自動で認識する本物のAI解析は、AI接続を追加した段階で有効になります。</div>
+</div>
+</section>
+
+<section class="pane" id="coach">
+<div class="eyebrow">AI COACH</div><h1>AIコーチに相談</h1><p class="muted small">練習や技術の悩みを整理して、次に確認することを考えよう。</p>
+<div class="section card">
+<div class="field"><label for="coachEvent">相談する種目</label><select id="coachEvent"><option>100m</option><option>走幅跳</option><option>三段跳</option><option>陸上全般</option></select></div>
+<div class="field"><label for="goal">今の目標・状況</label><input id="goal" placeholder="例：100mのスタートを安定させたい"></div>
+<div class="field"><label for="issue">相談したいこと</label><textarea id="issue" placeholder="練習で困っていること、動画で気になった点など"></textarea></div>
+<div class="field"><label for="condition">今日のコンディション</label><select id="condition"><option>良好</option><option>普通</option><option>疲労がある</option><option>痛み・違和感がある</option></select></div>
+<button class="btn primary" onclick="makeAdvice()">アドバイス案を作る</button>
+<div id="advice" class="hidden" aria-live="polite"></div>
+<div class="foot">※この試作版のアドバイスは入力内容に応じた一般的な確認ポイントです。AIモデルへの接続後に、対話型の個別コーチへ拡張します。</div>
+</div>
+<div class="section card"><h2>コーチングの基本方針</h2><ul class="muted small"><li>一度に直すポイントは少数に絞る</li><li>痛みや強い疲労がある日は無理に強度を上げない</li><li>練習量より、動きの質と回復の両方を大切にする</li><li>最終的な練習判断は指導者と相談する</li></ul></div>
+</section>
+
+<section class="pane" id="plan">
+<div class="eyebrow">MEET PLANNER</div><h1>大会・練習計画</h1><div class="section card">
+<div class="field"><label for="meetName">大会名</label><input id="meetName" placeholder="例：春季記録会"></div>
+<div class="field"><label for="meetDate">大会日</label><input id="meetDate" type="date"></div>
+<div class="field"><label for="planEvent">出場種目</label><select id="planEvent"><option>100m</option><option>走幅跳</option><option>三段跳</option><option>複数種目</option></select></div>
+<button class="btn primary" onclick="makePlan()">大会までの日数を確認</button><div id="planResult" class="result hidden"></div>
+</div><p class="foot">大会前の調整は、普段の練習や指導者の方針、疲労・痛みの有無に合わせてね。</p></section>
+</main>
+<nav class="tabs"><div class="tabin">
+<button class="active" data-page="home" onclick="show('home')"><span>⌂</span>ホーム</button>
+<button data-page="video" onclick="show('video')"><span>▣</span>動画分析</button>
+<button data-page="coach" onclick="show('coach')"><span>✦</span>AIコーチ</button>
+<button data-page="plan" onclick="show('plan')"><span>◷</span>大会計画</button>
+</div></nav>
+<script>
+const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0)}
+function attachVideo(inputId,boxId){$(inputId).addEventListener('change',e=>{const file=e.target.files&&e.target.files[0];if(!file)return;const url=URL.createObjectURL(file);$(boxId).innerHTML='';const v=document.createElement('video');v.controls=true;v.playsInline=true;v.preload='metadata';v.src=url;$(boxId).appendChild(v)})}
+attachVideo('myVideo','myBox');attachVideo('refVideo','refBox');
+function toggleBoth(){const a=$('myBox').querySelector('video'),b=$('refBox').querySelector('video');if(!a||!b){alert('先に2本の動画を選択してね');return}if(a.paused||b.paused){a.play().catch(()=>{});b.play().catch(()=>{});$('syncBtn').textContent='2本を一時停止'}else{a.pause();b.pause();$('syncBtn').textContent='2本を同時に再生'}}
+function resetVideos(){['myVideo','refVideo'].forEach(id=>$(id).value='');$('myBox').textContent='動画はまだ選択されていません';$('refBox').textContent='比較動画はまだ選択されていません';$('syncBtn').textContent='2本を同時に再生'}
+function makeAdvice(){const ev=$('coachEvent').value,goal=$('goal').value.trim(),issue=$('issue').value.trim(),condition=$('condition').value;let points=[];if(condition==='痛み・違和感がある'){points=['今日は痛みの出る動きを避け、強度の高い練習は中止してね','痛みが続く・強くなる場合は、指導者や医療専門職に相談しよう'];}else{if(ev==='100m')points=['スタートから最初の数歩で、上体を急いで起こしていないか確認','接地位置が身体より大きく前になりすぎていないか、横から動画で確認','短い距離で動きの質を確かめ、疲れてフォームが崩れる前に切り上げる'];else if(ev==='走幅跳')points=['助走のリズムが最後まで保てているか確認','踏切直前に歩幅を無理に合わせて減速していないか確認','踏切位置と着地の両方を動画で見て、課題を一つに絞る'];else if(ev==='三段跳')points=['ホップ・ステップ・ジャンプの各局面でリズムが崩れていないか確認','一つの局面だけを強く頑張りすぎず、全体のつながりを見る','疲労が強い日は跳躍の本数を増やさず、回復を優先する'];else points=['動画を正面・側面のどちらから撮ったか確認','一度に直すポイントを一つに絞る','練習後の疲労や違和感も一緒に記録する'];if(condition==='疲労がある')points.push('疲労が残っている日は本数や強度を控えめにして、回復を優先する');}
+$('advice').classList.remove('hidden');$('advice').innerHTML='<div class="result"><b>相談内容</b><div class="small">'+escapeHTML(ev)+'／'+escapeHTML(goal||'目標未入力')+'</div><p class="small">'+escapeHTML(issue||'具体的な悩みは未入力')+'</p><b>確認ポイント</b><ul>'+points.map(x=>'<li>'+escapeHTML(x)+'</li>').join('')+'</ul><div class="small muted">これは入力内容をもとにした一般的な確認案だよ。実際の動きや練習環境を指導者と一緒に確認してね。</div></div>'}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function makePlan(){const date=$('meetDate').value;if(!date){alert('大会日を入力してね');return}const days=Math.ceil((new Date(date+'T00:00:00')-new Date(new Date().toDateString()))/86400000);const msg=days<0?'大会日は過ぎています':days===0?'大会当日！':`大会まであと${days}日`;const box=$('planResult');box.classList.remove('hidden');box.innerHTML='<b>'+escapeHTML(msg)+'</b><div class="small">'+escapeHTML($('meetName').value||'大会名未入力')+' ／ '+escapeHTML($('planEvent').value)+'</div><p class="small">残り期間に合わせて、練習の質・技術確認・休養のバランスを考えよう。大会直前に急に練習量を増やさないことが大切。</p>'}
+</script>
+</body>
+</html>
