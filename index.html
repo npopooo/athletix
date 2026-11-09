@@ -3,33 +3,924 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101d35"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ATHLETIX"><meta name="description" content="Personal athletic performance dashboard"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><title>ATHLETIX | Performance System</title>
 <style>
-:root{--bg:#0a1426;--panel:#111f38;--panel2:#192b49;--line:#263c5e;--text:#f4f8ff;--muted:#9eb1cb;--cyan:#72d6ff;--cyan2:#35b9ec;--good:#80e0c0;--shadow:0 12px 30px #0004}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#1d4266 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:760px;margin:auto;padding:20px 16px 100px}.top{display:flex;align-items:center;justify-content:space-between;margin:5px 0 22px}.brand{font-size:25px;letter-spacing:.12em;font-weight:850}.brand span{color:var(--cyan)}.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:.18em;font-weight:800}.avatar{border:1px solid var(--line);border-radius:50%;width:38px;height:38px;display:grid;place-items:center;color:var(--cyan);background:var(--panel)}h1{font-size:25px;line-height:1.2;margin:4px 0 6px}h2{font-size:16px;margin:0}.muted{color:var(--muted)}.small{font-size:12px}.hero{background:linear-gradient(135deg,#1b3658,#10203b 70%);border:1px solid #345274;border-radius:22px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #72d6ff22;border-radius:50%;right:-65px;top:-75px;box-shadow:0 0 0 22px #72d6ff08,0 0 0 45px #72d6ff06}.hero p{margin:0 0 18px;color:#c3d4e8}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#0b1b32a8;border:1px solid #45608088;border-radius:14px;padding:13px;position:relative;z-index:1}.metric label{display:block;color:#a9c3df;font-size:10px;letter-spacing:.1em}.metric strong{font-size:26px;display:block;margin-top:4px}.metric small{color:var(--muted)}.section{margin-top:22px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:var(--shadow)}.goalrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.pill{font-size:10px;color:var(--cyan);background:#193d59;border:1px solid #2a6687;padding:4px 8px;border-radius:30px}.progress{height:7px;background:#263b58;border-radius:8px;margin:12px 0 7px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#3cb9ed,#91e6ff);border-radius:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{display:flex;gap:10px;align-items:center}.quick .ico{width:37px;height:37px;border-radius:12px;background:#1a3857;color:var(--cyan);display:grid;place-items:center;font-size:18px}.quick b{display:block;font-size:13px}.quick span{font-size:11px;color:var(--muted)}.nav{position:fixed;bottom:0;left:0;right:0;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:#0b1729ee;backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:10}.navin{width:min(760px,100%);display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.nav button{border:0;background:none;color:var(--muted);font-size:10px;padding:7px 2px;border-radius:12px}.nav button span{display:block;font-size:19px;margin-bottom:2px}.nav button.active{background:#18314e;color:var(--cyan)}.view{display:none}.view.active{display:block}.btn{border:1px solid #3b6689;background:#163552;color:var(--cyan);border-radius:11px;padding:9px 12px;font-weight:700;font-size:12px}.btn.primary{background:var(--cyan);color:#082039;border-color:var(--cyan)}.form{display:grid;gap:10px}.form label{font-size:12px;color:#b6c8dd}.form input,.form select,.form textarea{display:block;width:100%;margin-top:5px;border:1px solid #304866;background:#0b192d;color:var(--text);border-radius:10px;padding:11px;outline:none}.form textarea{min-height:70px;resize:vertical}.list{display:grid;gap:9px}.record{display:flex;justify-content:space-between;gap:12px;align-items:center}.record strong{font-size:19px}.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed #38506e;border-radius:14px}.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.video-grid video{width:100%;background:#07101d;border-radius:10px;aspect-ratio:9/16;object-fit:contain}.note{background:#102b42;border:1px solid #245273;color:#c4e8f8;padding:12px;border-radius:12px;font-size:12px}.hidden{display:none!important}.chart{height:125px;display:flex;align-items:end;gap:7px;padding:12px 3px 0}.bar{flex:1;background:linear-gradient(0deg,#2599d0,#8be1ff);border-radius:6px 6px 2px 2px;min-height:4px;position:relative}.bar:after{content:attr(data-label);position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted)}
-@media(min-width:600px){.app{padding-top:28px}.hero{padding:25px}.metrics{grid-template-columns:repeat(4,1fr)}}
+
+
+:root{
+  --bg:#050b18;
+  --panel:#0d1930;
+  --panel2:#142744;
+  --line:#23466b;
+  --text:#f4f9ff;
+  --muted:#91a9c5;
+  --cyan:#58d9ff;
+  --cyan2:#168cff;
+  --good:#80e0c0;
+  --shadow:0 12px 35px #0008;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 50% -15%,#15518a66,transparent 55%),
+    radial-gradient(ellipse at 100% 50%,#063b6b22,transparent 50%),
+    var(--bg);
+  color:var(--text);
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.app{
+  max-width:760px;
+  margin:auto;
+  padding:20px 16px 110px;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:5px 0 24px;
+}
+
+.brand{
+  font-size:27px;
+  letter-spacing:.14em;
+  font-weight:900;
+  text-shadow:0 0 20px #36baff55;
+}
+
+.brand span{
+  color:var(--cyan);
+  text-shadow:0 0 15px #35caff;
+}
+
+.eyebrow{
+  color:var(--cyan);
+  font-size:10px;
+  letter-spacing:.2em;
+  font-weight:900;
+}
+
+.avatar{
+  border:1px solid #2876a9;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  color:var(--cyan);
+  background:linear-gradient(145deg,#17375a,#09182c);
+  box-shadow:0 0 18px #16aaff22;
+}
+
+h1{
+  font-size:27px;
+  line-height:1.2;
+  margin:4px 0 7px;
+  letter-spacing:-.02em;
+}
+
+h2{font-size:16px;margin:0}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+
+.hero{
+  background:
+    linear-gradient(125deg,#123c63,#0c1d37 65%,#102d4b);
+  border:1px solid #2676a5;
+  border-radius:23px;
+  padding:21px;
+  box-shadow:0 0 25px #008cff20,var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:210px;
+  height:210px;
+  border:1px solid #72d6ff55;
+  border-radius:50%;
+  right:-75px;
+  top:-85px;
+  box-shadow:
+    0 0 0 18px #72d6ff10,
+    0 0 0 38px #72d6ff08,
+    0 0 35px #168cff33;
+  pointer-events:none;
+}
+
+.hero p{margin:0 0 18px;color:#c8e4f8}
+
+.metrics{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.metric{
+  background:linear-gradient(145deg,#102a49dd,#071629ee);
+  border:1px solid #3273a0aa;
+  border-radius:15px;
+  padding:14px;
+  position:relative;
+  z-index:1;
+  box-shadow:inset 0 1px #ffffff0c,0 5px 18px #0003;
+}
+
+.metric label{
+  display:block;
+  color:#a9c9e8;
+  font-size:10px;
+  letter-spacing:.12em;
+}
+
+.metric strong{
+  font-size:27px;
+  display:block;
+  margin-top:4px;
+  text-shadow:0 0 15px #39baff55;
+}
+
+.metric small{color:var(--muted)}
+
+.section{margin-top:25px}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.card{
+  background:linear-gradient(145deg,#112440ee,#0a172aee);
+  border:1px solid #28496b;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:inset 0 1px #ffffff0a,0 10px 28px #0005;
+}
+
+.goalrow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.pill{
+  font-size:10px;
+  color:var(--cyan);
+  background:#123b5b;
+  border:1px solid #2675a3;
+  padding:4px 9px;
+  border-radius:30px;
+}
+
+.progress{
+  height:8px;
+  background:#1b3452;
+  border-radius:8px;
+  margin:12px 0 7px;
+  overflow:hidden;
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#168cff,#58e4ff);
+  border-radius:8px;
+  box-shadow:0 0 12px #26baff;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.quick{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.quick .ico{
+  width:39px;
+  height:39px;
+  border-radius:12px;
+  background:linear-gradient(145deg,#164b72,#102640);
+  color:var(--cyan);
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  border:1px solid #286d99;
+  box-shadow:0 0 14px #168cff22;
+}
+
+.quick b{display:block;font-size:13px}
+.quick span{font-size:11px;color:var(--muted)}
+
+.nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:9px 10px calc(9px + env(safe-area-inset-bottom));
+  background:#071326ed;
+  backdrop-filter:blur(20px);
+  border-top:1px solid #23466b;
+  display:flex;
+  justify-content:center;
+  z-index:10;
+  box-shadow:0 -8px 30px #0005;
+}
+
+.navin{
+  width:min(760px,100%);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+}
+
+.nav button{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:10px;
+  padding:8px 2px;
+  border-radius:12px;
+}
+
+.nav button span{
+  display:block;
+  font-size:20px;
+  margin-bottom:2px;
+}
+
+.nav button.active{
+  background:linear-gradient(145deg,#163c60,#102945);
+  color:var(--cyan);
+  box-shadow:inset 0 0 15px #168cff22,0 0 12px #168cff18;
+}
+
+.view{display:none}
+.view.active{display:block}
+
+.btn{
+  border:1px solid #2879a8;
+  background:linear-gradient(145deg,#153b5b,#102640);
+  color:var(--cyan);
+  border-radius:11px;
+  padding:9px 13px;
+  font-weight:750;
+  font-size:12px;
+  box-shadow:0 0 12px #168cff18;
+}
+
+.btn.primary{
+  background:linear-gradient(110deg,#39bfff,#78e5ff);
+  color:#04172a;
+  border-color:#7be4ff;
+  box-shadow:0 0 18px #27baff55;
+}
+
+.form{display:grid;gap:10px}
+
+.form label{
+  font-size:12px;
+  color:#b6cce3;
+}
+
+.form input,.form select,.form textarea{
+  display:block;
+  width:100%;
+  margin-top:5px;
+  border:1px solid #294d70;
+  background:#071629;
+  color:var(--text);
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+}
+
+.form input:focus,.form select:focus,.form textarea:focus{
+  border-color:var(--cyan);
+  box-shadow:0 0 0 2px #39bfff22;
+}
+
+.form textarea{min-height:70px;resize:vertical}
+
+.list{display:grid;gap:9px}
+
+.record{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+
+.record strong{font-size:19px}
+
+.empty{
+  padding:22px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #345779;
+  border-radius:14px;
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.video-grid video{
+  width:100%;
+  background:#030b16;
+  border:1px solid #285276;
+  border-radius:11px;
+  aspect-ratio:9/16;
+  object-fit:contain;
+}
+
+.note{
+  background:linear-gradient(120deg,#102f4b,#10243a);
+  border:1px solid #28658c;
+  color:#c4e8f8;
+  padding:13px;
+  border-radius:13px;
+  font-size:12px;
+}
+
+.hidden{display:none!important}
+
+.chart{
+  height:125px;
+  display:flex;
+  align-items:end;
+  gap:7px;
+  padding:12px 3px 0;
+}
+
+.bar{
+  flex:1;
+  background:linear-gradient(0deg,#0879d4,#65e4ff);
+  border-radius:7px 7px 2px 2px;
+  min-height:4px;
+  position:relative;
+  box-shadow:0 0 13px #1baaff55;
+}
+
+.bar:after{
+  content:attr(data-label);
+  position:absolute;
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  color:var(--muted);
+}
+
+@media(min-width:600px){
+  .app{padding-top:28px}
+  .hero{padding:25px}
+  .metrics{grid-template-columns:repeat(4,1fr)}
+}
+
+.brand-area{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.brand-symbol{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  font-size:29px;
+  font-weight:950;
+  font-style:italic;
+  color:#fff;
+  border:1px solid #39c9ff;
+  border-radius:12px;
+  background:linear-gradient(145deg,#174c79,#07182c);
+  box-shadow:0 0 18px #168cff55,inset 0 0 12px #168cff22;
+}
+
+.brand-symbol span{
+  position:absolute;
+  width:17px;
+  height:3px;
+  right:-7px;
+  bottom:7px;
+  background:#58d9ff;
+  box-shadow:0 0 9px #58d9ff;
+  transform:skewX(-35deg);
+}
+
+/* ATHLETIX PERFORMANCE HERO */
+.hero{
+  background:
+    linear-gradient(115deg,#102f50f5 0%,#09182cf5 55%,#071426f5 100%);
+  border:1px solid #38bfff88;
+  box-shadow:
+    0 0 25px #078fff22,
+    0 0 55px #078fff12,
+    inset 0 1px #ffffff15;
+}
+
+.hero h1{
+  font-size:30px;
+  letter-spacing:-.04em;
+  text-shadow:0 0 22px #37baff55;
+}
+
+.hero .eyebrow{
+  text-shadow:0 0 12px #45d8ff88;
+}
+
+.hero .metric{
+  background:linear-gradient(145deg,#102c4bea,#071426f5);
+  border:1px solid #3b9bd477;
+  box-shadow:0 0 16px #078fff16,inset 0 1px #ffffff10;
+}
+
+.hero .metric strong{
+  color:#73ddff;
+  text-shadow:0 0 18px #26baff66;
+}
+
+.hero .metric label{
+  color:#a9d9f5;
+}
+
+.meet-card{
+  background:
+    radial-gradient(circle at 100% 0%,#087ecb33,transparent 45%),
+    linear-gradient(135deg,#102c4b,#081629);
+  border:1px solid #319bd477;
+  box-shadow:0 0 22px #078fff20,inset 0 1px #ffffff12;
+}
+
+.meet-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.meet-card-main{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.meet-icon{
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  border-radius:15px;
+  background:#123d60;
+  border:1px solid #328bc0;
+  box-shadow:0 0 18px #168cff33;
+}
+
+.meet-card h2{
+  color:#f4f9ff;
+  margin-bottom:5px;
+}
+.coach-accordion {
+  margin-top: 12px;
+  border: 1px solid #38bfff88;
+  border-radius: 16px;
+  background: linear-gradient(135deg,#102b4b,#081426);
+  overflow: hidden;
+}
+
+.coach-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #58d9ff;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.coach-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.coach-accordion summary::after {
+  content: "＋";
+  font-size: 22px;
+  color: #58d9ff;
+}
+
+.coach-accordion[open] summary::after {
+  content: "－";
+}
+
+.coach-accordion .card {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0 18px 18px;
+}
 </style></head>
 <body><main class="app">
-<header class="top"><div><div class="brand">ATHLE<span>TIX</span></div><div class="eyebrow">PERSONAL PERFORMANCE SYSTEM</div></div><div class="avatar">A</div></header>
+
 <section id="dashboard" class="view active">
+<header class="top">
+  <div class="brand-area">
+    <div class="brand-symbol">A<span></span></div>
+    <div>
+      <div class="brand">ATHLE<span>TIX</span></div>
+      <div class="eyebrow">PERSONAL PERFORMANCE SYSTEM</div>
+    </div>
+  </div>
+  <div class="avatar">A</div>
+</header>
+
+
 <div class="hero"><div class="eyebrow">YOUR DATA. YOUR PERFORMANCE.</div><h1>Performance<br>Dashboard</h1><p>記録を積み重ねて、自分の成長を見える化。</p><div class="metrics"><div class="metric"><label>100M PERSONAL BEST</label><strong id="dash100">--.--</strong><small>秒</small></div><div class="metric"><label>LONG JUMP PB</label><strong id="dashLJ">-.--</strong><small>m</small></div><div class="metric"><label>TRIPLE JUMP PB</label><strong id="dashTJ">-.--</strong><small>m</small></div><div class="metric"><label>RECORDS</label><strong id="dashCount">0</strong><small>entries</small></div></div></div>
 <div class="section"><div class="section-head"><h2>ACTIVE GOAL</h2><span class="pill">GOAL TRACKER</span></div><div class="card" id="goalSummary"><div class="muted small">目標を登録すると、ここに表示されます。</div><button class="btn" onclick="show('training')">目標を登録する ＋</button></div></div>
-<div class="section"><div class="section-head"><h2>NEXT COMPETITION</h2><span class="pill">COUNTDOWN PLAN</span></div><div class="card" id="meetSummary"><div class="muted small">大会を登録すると、残り日数と準備計画が表示されます。</div><button class="btn" onclick="show('training')">大会を登録する ＋</button></div></div>
+<div class="section"><div class="section-head"><h2>NEXT COMPETITION</h2><span class="pill">COUNTDOWN PLAN</span></div>
+<div class="card meet-card" id="meetSummary">
+  <div class="meet-card-top">
+    <span class="eyebrow">UPCOMING EVENT</span>
+    <span class="pill">COUNTDOWN</span>
+  </div>
+  <div class="meet-card-main">
+    <div class="meet-icon">🏟️</div>
+    <div>
+      <h2>次の大会</h2>
+      <p class="muted small">大会を登録して、目標までの準備を始めよう。</p>
+    </div>
+  </div>
+  <button class="btn primary" onclick="show('training')">大会を登録する ＋</button>
+</div>
+
 <div class="section"><div class="section-head"><h2>PERFORMANCE TREND</h2><span class="muted small">LATEST RECORDS</span></div><div class="card"><div id="trend" class="chart"></div><div class="muted small" style="margin-top:24px">大会記録を登録すると、記録の推移が表示されます。</div></div></div>
 <div class="section"><div class="section-head"><h2>QUICK ACCESS</h2><span class="eyebrow">TOOLS</span></div><div class="grid2"><div class="card quick" onclick="show('records')"><div class="ico">▤</div><div><b>大会記録</b><span>RECORDS</span></div></div><div class="card quick" onclick="show('training')"><div class="ico">◎</div><div><b>目標・練習</b><span>TRAINING</span></div></div><div class="card quick" onclick="show('video')"><div class="ico">▷</div><div><b>動画比較</b><span>VIDEO LAB</span></div></div><div class="card quick" onclick="show('condition')"><div class="ico">＋</div><div><b>コンディション</b><span>WELLNESS</span></div></div></div></div>
 </section>
 <section id="records" class="view"><div class="eyebrow">PERFORMANCE DATABASE</div><h1>Competition Records</h1><p class="muted">大会の記録・風速・メモを保存。</p><div class="card form"><label>種目<select id="event"><option>100m</option><option>200m</option><option>走幅跳</option><option>三段跳</option><option>その他</option></select></label><label>記録<input id="mark" placeholder="例：13.85 / 4.20" inputmode="decimal"></label><label>風速（m/s）<input id="wind" placeholder="例：+1.2 / 不明" inputmode="decimal"></label><label>大会名<input id="meet" placeholder="大会名"></label><label>日付<input id="date" type="date"></label><label>メモ<textarea id="memo" placeholder="感覚・課題など"></textarea></label><button class="btn primary" onclick="addRecord()">記録を保存する</button></div><div class="section"><div class="section-head"><h2>RECORD HISTORY</h2><span class="muted small" id="recordCount">0件</span></div><div id="recordList" class="list"></div></div></section>
 <section id="training" class="view"><div class="eyebrow">GOAL & DEVELOPMENT</div><h1>Training Plan</h1><p class="muted">目標を決めて、達成までの道筋を整理。</p>
 <div class="section"><div class="section-head"><h2>MEET COUNTDOWN</h2><span class="pill">REVERSE PLANNING</span></div><div class="card form"><p class="muted small" style="margin:0">次の大会の日から逆算して、準備の段階と週ごとの重点を自動整理するよ。</p><label>大会名<input id="meetPlanName" placeholder="例：春季記録会"></label><label>出場種目<select id="meetPlanEvent"><option>100m</option><option>200m</option><option>走幅跳</option><option>三段跳</option><option>短距離・跳躍複合</option></select></label><label>大会日<input id="meetPlanDate" type="date"></label><label>現在の記録（任意）<input id="meetPlanCurrent" placeholder="例：13.85秒 / 4.20m"></label><label>大会での目標（任意）<input id="meetPlanTarget" placeholder="例：13.60秒 / 4.40m"></label><label>週に練習できる日数<select id="meetPlanDays"><option value="2">週2日</option><option value="3" selected>週3日</option><option value="4">週4日</option><option value="5">週5日</option><option value="6">週6日</option></select></label><label>チーム練習・休養日など（任意）<textarea id="meetPlanNotes" placeholder="例：水曜はチーム練習、日曜は休み"></textarea></label><button class="btn primary" onclick="saveMeetPlan()">大会から逆算して計画を作る</button></div><div class="section"><div class="section-head"><h2>YOUR ROADMAP</h2><span class="muted small">AUTO PLAN</span></div><div id="meetPlanOutput" class="card"><div class="muted small">大会情報を登録すると、ここに逆算プランが表示されます。</div></div></div></div><div class="card form"><label>種目<select id="goalEvent"><option>100m</option><option>短距離</option><option>走幅跳</option><option>三段跳</option></select></label><label>現在の記録<input id="current" placeholder="例：13.90"></label><label>目標記録<input id="target" placeholder="例：13.60"></label><label>達成期限<input id="deadline" type="date"></label><label>目標の理由<textarea id="reason" placeholder="なぜ達成したい？"></textarea></label><button class="btn primary" onclick="saveGoal()">目標を保存する</button></div><div class="section"><div class="section-head"><h2>MY GOAL</h2><span class="pill">ROADMAP</span></div><div id="goalDetail" class="card muted small">目標を登録すると、ここに表示されます。</div></div><div class="note" style="margin-top:12px">練習内容は体調・疲労・痛みを優先して調整してね。この試作品のロードマップは一般的な目安で、AIによる個別診断ではありません。</div></section>
-<section id="video" class="view"><div class="eyebrow">MOVEMENT REVIEW</div><h1>Video Lab</h1><p class="muted">過去の自分の動画を2本並べて比較。</p><div class="note">動画はこの画面で一時的にプレビューするだけ。サーバーにはアップロードされません。画面を閉じると選択が解除される場合があります。</div><div class="card form" style="margin-top:12px"><label>VIDEO A — BEFORE<input id="videoA" type="file" accept="video/*"></label><label>VIDEO B — AFTER<input id="videoB" type="file" accept="video/*"></label><button class="btn" onclick="syncVideos()">2つの動画を同時に再生／停止</button></div><div class="video-grid section"><video id="playerA" controls playsinline></video><video id="playerB" controls playsinline></video></div><div class="note section">フォームの自動認識・骨格推定・AIによる技術評価は、まだ実装されていません。</div></section>
+<section id="video" class="view">
+  <div class="eyebrow">MOVEMENT INTELLIGENCE</div>
+  <h1>Video Lab</h1>
+  <p class="muted">動画から自分自身の動きを分析する。</p>
+
+  <div class="note">
+    動画はブラウザ内でプレビューします。現段階では外部サーバーへのアップロードは行いません。
+  </div>
+
+  <div class="card form" style="margin-top:12px">
+    <h2>VIDEO COMPARISON</h2>
+
+    <label>VIDEO A — BEFORE
+      <input id="videoA" type="file" accept="video/*">
+    </label>
+
+    <label>VIDEO B — AFTER
+      <input id="videoB" type="file" accept="video/*">
+    </label>
+
+    <button class="btn" onclick="syncVideos()">
+      2つの動画を同時に再生／停止
+    </button>
+  </div>
+
+  <div class="video-grid section">
+    <video id="playerA" controls playsinline></video>
+    <video id="playerB" controls playsinline></video>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>PERSONAL VIDEO ANALYSIS</h2>
+      <span class="pill">AI LAB</span>
+    </div>
+
+    <div class="card form">
+      <div class="eyebrow">YOUR MOVEMENT DATA</div>
+      <h2>個人別フォーム分析</h2>
+
+      <label>分析する種目
+        <select id="videoEvent">
+          <option value="100m">100m</option>
+          <option value="走幅跳">走幅跳</option>
+          <option value="三段跳">三段跳</option>
+        </select>
+      </label>
+
+      <label>分析する動画
+        <select id="videoTarget">
+          <option value="A">動画A</option>
+          <option value="B">動画B</option>
+          <option value="both">動画A・Bを比較</option>
+        </select>
+      </label>
+
+      <label>確認したい動作
+        <select id="videoFocus">
+          <option value="all">全体的な動き</option>
+          <option value="start">スタート・助走</option>
+          <option value="posture">姿勢・身体の使い方</option>
+          <option value="contact">接地・踏切</option>
+          <option value="rhythm">動作のリズム</option>
+        </select>
+      </label>
+
+      <button class="btn primary" onclick="analyzePersonalVideo()">
+        個人別動画分析を開始 →
+      </button>
+
+      <div id="personalVideoAnalysis" class="muted small" style="margin-top:14px">
+        動画を選択して分析を開始すると、ここに結果が表示されます。
+      </div>
+    </div>
+  </div>
+</section>
 <section id="condition" class="view"><div class="eyebrow">DAILY CHECK-IN</div><h1>Condition Log</h1><p class="muted">食事・水分・疲労などを記録。</p><div class="card form"><label>日付<input id="logDate" type="date"></label><label>水分量（目安・mL）<input id="water" type="number" placeholder="例：1500" inputmode="numeric"></label><label>食事・補食メモ<textarea id="food" placeholder="食べたもの、練習前後の補食など"></textarea></label><label>疲労感（1〜5）<select id="fatigue"><option value="">選択</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>体調メモ<textarea id="conditionMemo" placeholder="睡眠・筋肉の張り・痛みなど"></textarea></label><button class="btn primary" onclick="saveLog()">今日のログを保存</button></div><div class="section"><h2>RECENT LOGS</h2><div id="logList" class="list" style="margin-top:10px"></div></div></section>
-</main><nav class="nav"><div class="navin"><button class="active" data-view="dashboard" onclick="show('dashboard')"><span>⌂</span>HOME</button><button data-view="records" onclick="show('records')"><span>▤</span>RECORDS</button><button data-view="training" onclick="show('training')"><span>◎</span>TRAINING</button><button data-view="condition" onclick="show('condition')"><span>＋</span>CONDITION</button></div></nav>
+<section id="coach" class="view">
+  <div class="eyebrow">AI PERFORMANCE SUPPORT</div>
+  
+  <p class="muted">記録・目標・体調をもとに、競技力向上をサポート。</p>
+
+<section id="coach" class="view">
+  <div class="eyebrow">ATHLETIX INTELLIGENCE SYSTEM</div>
+  <h1>AI Coach</h1>
+  <p class="muted">YOUR PERFORMANCE. YOUR EVOLUTION.</p>
+
+  <div class="card" style="border:1px solid #38bfff88;background:linear-gradient(135deg,#102b4b,#081426);padding:20px">
+     <div class="grid2" style="margin-top:16px">
+      <div class="metric">
+        <label>RECORDS</label>
+        <strong id="coachRecordCount">0</strong>
+        <small>登録記録</small>
+      </div>
+      <div class="metric">
+        <label>UPCOMING MEETS</label>
+        <strong id="coachMeetCount">0</strong>
+        <small>予定大会</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>PERFORMANCE ANALYSIS</h2>
+      <span class="pill">01</span>
+    </div>
+    <details class="coach-accordion">
+  <summary>分析画面を開く ▼</summary>
+  <div class="card">
+      <div class="eyebrow">RECORD INTELLIGENCE</div>
+      <h2>パフォーマンス分析</h2>
+      <p class="muted small">大会記録と自己ベストを振り返る。</p>
+      <button class="btn primary" onclick="analyzePerformance()">記録を分析する →</button>
+      <div id="coachAnalysis" class="muted small" style="margin-top:12px">
+        分析ボタンを押すと記録の概要を表示します。
+      </div>
+    </div>
+</details>
+</div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>CONDITION INTELLIGENCE</h2>
+      <span class="pill">02</span>
+    </div>
+        <details class="coach-accordion">
+      <summary>コンディション分析を開く</summary>
+      <div class="card">
+      <div class="eyebrow">WELLNESS DATA</div>
+      <h2>コンディション分析</h2>
+      <p class="muted small">最近の疲労感や体調記録を確認する。</p>
+      <button class="btn primary" onclick="analyzeCondition()">コンディションを分析する →</button>
+      <div id="coachCondition" class="muted small" style="margin-top:12px">
+        コンディション分析はまだ実行されていません。
+      </div>
+    </div>
+ </details>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>MEET INTELLIGENCE</h2>
+      <span class="pill">03</span>
+    </div>
+    <details class="coach-accordion">
+  <summary>大会計画分析を開く</summary>
+  <div class="card">
+      <div class="eyebrow">COMPETITION PLANNING</div>
+      <h2>大会計画分析</h2>
+      <p class="muted small">大会までの残り日数と目標を確認する。</p>
+      <button class="btn primary" onclick="analyzeMeet()">大会計画を確認する →</button>
+      <div id="coachMeet" class="muted small" style="margin-top:12px">
+        大会分析はまだ実行されていません。
+      </div>
+    </div>
+ </details>
+  </div>
+<div class="section">
+  <div class="section-head">
+    <h2>WEAKNESS INTELLIGENCE</h2>
+    <span class="pill">06</span>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">ATHLETE DEVELOPMENT</div>
+    <h2>弱点・改善ポイント分析</h2>
+    <p class="muted small">
+      登録した大会記録から種目別の課題を整理する。
+    </p>
+
+    <button class="btn primary" onclick="analyzeWeakness()">
+      弱点を分析する →
+    </button>
+
+    <div id="coachWeakness" class="muted small"
+         style="margin-top:12px">
+      分析ボタンを押すと改善ポイントを表示します。
+    </div>
+  </div>
+</div>
+  <div class="section">
+  <div class="section-head">
+    <h2>EVENT INTELLIGENCE</h2>
+    <span class="pill">07</span>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">EVENT SPECIFIC COACHING</div>
+    <h2>種目別アドバイス</h2>
+    <p class="muted small">
+      競技種目を選択して、技術面の確認ポイントをチェックする。
+    </p>
+
+    <select id="coachEvent" class="input">
+      <option value="100m">100m</option>
+      <option value="走幅跳">走幅跳</option>
+      <option value="三段跳">三段跳</option>
+    </select>
+
+    <button class="btn primary" onclick="analyzeEventAdvice()">
+      アドバイスを見る →
+    </button>
+
+    <div id="coachEventAdvice" class="muted small"
+         style="margin-top:12px">
+      種目を選んでアドバイスを確認しよう。
+    </div>
+  </div>
+</div>
+<div class="section">
+    <div class="section-head">
+      <h2>TRAINING SUPPORT</h2>
+      <span class="pill">04</span>
+    </div>
+    <div class="card">
+      <div class="eyebrow">PERSONAL DEVELOPMENT</div>
+      <h2>トレーニング提案</h2>
+      <p class="muted small">目標・練習計画を確認する。</p>
+      <button class="btn" onclick="show('training')">練習計画を開く →</button>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line)">
+  <div class="eyebrow">PERSONAL TRAINING GENERATOR</div>
+  <h3>練習メニュー自動提案</h3>
+
+  <label class="muted small">対象種目</label>
+  <select id="trainingEvent" class="input">
+    <option value="100m">100m</option>
+    <option value="走幅跳">走幅跳</option>
+    <option value="三段跳">三段跳</option>
+    <option value="短距離・跳躍複合">短距離・跳躍複合</option>
+  </select>
+
+  <label class="muted small">今日のコンディション</label>
+  <select id="trainingCondition" class="input">
+    <option value="good">良好</option>
+    <option value="normal" selected>普通</option>
+    <option value="tired">疲労がある</option>
+    <option value="poor">疲労が強い・痛みがある</option>
+  </select>
+
+  <label class="muted small">練習の目的</label>
+  <select id="trainingPurpose" class="input">
+    <option value="speed">スピード・加速</option>
+    <option value="technique">技術・フォーム</option>
+    <option value="power">跳躍・パワー</option>
+    <option value="recovery">回復・コンディショニング</option>
+  </select>
+
+  <button class="btn primary" onclick="generateTrainingMenu()">
+    メニューを提案する →
+  </button>
+
+  <div id="trainingMenuOutput" class="muted small" style="margin-top:14px">
+    種目・体調・目的を選択して提案ボタンを押してね。
+  </div>
+</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <h2>VIDEO INTELLIGENCE</h2>
+      <span class="pill">05</span>
+    </div>
+    <div class="card">
+      <div class="eyebrow">MOVEMENT ANALYSIS</div>
+      <h2>動画フォーム分析</h2>
+      <p class="muted small">自分の動画確認・2本比較を行う。</p>
+      <button class="btn" onclick="show('video')">VIDEO LABを開く →</button>
+    </div>
+  </div>
+
+  <div class="note">
+    現在の分析は登録データの集計・整理機能です。AIによる個別診断や動画の自動フォーム認識は、外部AIとの接続後に実装します。
+  </div>
+</section>
+
+
+</main><nav class="nav"><div class="navin"><button class="active" data-view="dashboard" onclick="show('dashboard')"><span>⌂</span>HOME</button><button data-view="records" onclick="show('records')"><span>▤</span>RECORDS</button><button data-view="training" onclick="show('training')"><span>◎</span>TRAINING</button><button data-view="coach" onclick="show('coach')"><span>✦</span>AI COACH</button><button data-view="condition" onclick="show('condition')"><span>＋</span>CONDITION</button></div></nav>
 <script>
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 const $=id=>document.getElementById(id);
-const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem('athletix_'+k))??d}catch{return d}},put=(k,v)=>localStorage.setItem('athletix_'+k,JSON.stringify(v));let records=get('records'),goal=get('goal',null),logs=get('logs'),meetPlan=get('meetPlan',null);
+const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem('athletix_'+k))??d}catch{return d}},put=(k,v)=>localStorage.setItem('athletix_'+k,JSON.stringify(v));let records=get('records'),
+goal=get('goal',null),
+logs=get('logs'),
+meetPlans=get('meetPlans',null);
+
+if(!Array.isArray(meetPlans)){
+  const oldPlan=get('meetPlan',null);
+  meetPlans=oldPlan?[{...oldPlan,id:Date.now()}]:[];
+  put('meetPlans',meetPlans);
+}
+
+let openMeetPlanId=null;let 
+meetPlan=meetPlans[0]||null;
 function show(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));window.scrollTo(0,0);render()}
 function addRecord(){let r={event:$('event').value,mark:$('mark').value.trim(),wind:$('wind').value.trim(),meet:$('meet').value.trim(),date:$('date').value,memo:$('memo').value.trim()};if(!r.mark){alert('記録を入力してね');return}records.unshift(r);put('records',records);['mark','wind','meet','memo'].forEach(id=>document.getElementById(id).value='');render()}
 function localDate(d){let y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
 function daysUntil(date){let a=new Date();a.setHours(0,0,0,0);let b=new Date(date+'T00:00:00');return Math.ceil((b-a)/86400000)}
-function saveMeetPlan(){let date=$('meetPlanDate').value;if(!date){alert('大会日を入力してね');return}let left=daysUntil(date);if(left<0){alert('大会日は今日以降の日付にしてね');return}meetPlan={name:$('meetPlanName').value.trim(),event:$('meetPlanEvent').value,date,current:$('meetPlanCurrent').value.trim(),target:$('meetPlanTarget').value.trim(),days:Number($('meetPlanDays').value),notes:$('meetPlanNotes').value.trim()};put('meetPlan',meetPlan);render();alert('大会から逆算した計画を作成したよ！')}
+function saveMeetPlan(){
+  let date=$('meetPlanDate').value;
+
+  if(!date){
+    alert('大会日を入力してね');
+    return;
+  }
+
+  let left=daysUntil(date);
+
+  if(left<0){
+    alert('大会日は今日以降の日付にしてね');
+    return;
+  }
+
+  let newPlan={
+    id:Date.now(),
+    name:$('meetPlanName').value.trim(),
+    event:$('meetPlanEvent').value,
+    date,
+    current:$('meetPlanCurrent').value.trim(),
+    target:$('meetPlanTarget').value.trim(),
+    days:Number($('meetPlanDays').value),
+    notes:$('meetPlanNotes').value.trim()
+  };
+
+  meetPlans.push(newPlan);
+  put('meetPlans',meetPlans);
+
+  meetPlan=newPlan;
+  openMeetPlanId=newPlan.id;
+  render();
+
+  alert('大会計画を保存したよ！');
+}
+
+function openMeetPlan(id){
+  openMeetPlanId=id;
+  show('training');
+}
 function phaseFor(days){if(days<=3)return ['大会直前','新しい強い練習は避け、体調確認・軽い動きの確認・準備を優先'];if(days<=7)return ['レース・試技感覚の確認','短く軽めに動きのキレを確認。疲労を残さず、睡眠と食事を整える'];if(days<=14)return ['調整期','練習量を少しずつ整理し、種目の感覚と技術を確認。回復日を確保'];if(days<=28)return ['専門性・スピード強化期','大会種目に直結する動きの質を優先。高負荷を重ねず、技術と回復を両立'];return ['基礎・課題改善期','フォームや助走・加速などの課題を絞り、基礎づくりから段階的に進める']}
 function eventFocus(event){if(event==='100m'||event==='短距離・跳躍複合')return 'スタート〜加速、姿勢、リラックスしたスプリント動作';if(event==='200m')return '加速から中盤へのつなぎ、コーナー走、リズムとペース配分';if(event==='走幅跳')return '助走の再現性、踏切位置、空中動作と着地の確認';if(event==='三段跳')return '助走のリズム、ホップ・ステップ・ジャンプのつながり、着地までの姿勢';return '種目に合った技術と動きの再現性'}
 function buildMeetPlan(p){let left=daysUntil(p.date);let phase=phaseFor(left);let weeks=Math.max(1,Math.ceil(left/7));let focus=eventFocus(p.event);let html=`<div class="goalrow"><div><div class="eyebrow">${esc(p.event)} · ${esc(p.name||'大会名未設定')}</div><div style="font-size:34px;font-weight:850;color:var(--cyan);line-height:1.2;margin:7px 0">あと${left}日</div><div class="muted small">大会日：${esc(p.date)}</div></div><span class="pill">${weeks}週の準備</span></div><div class="progress"><i style="width:${Math.max(5,Math.min(100,100-left/90*100))}%"></i></div><p><b>現在の重点：${phase[0]}</b><br><span class="muted small">${phase[1]}</span></p>`;
@@ -37,11 +928,655 @@ if(p.current||p.target)html+=`<div class="grid2"><div class="metric"><label>CURR
 html+=`<div style="margin-top:14px"><b>種目別重点</b><p class="muted small">${focus}</p><b>週ごとの逆算プラン</b><div class="list" style="margin-top:9px">`;
 for(let w=1;w<=weeks;w++){let remaining=left-(w-1)*7;let ph=phaseFor(Math.max(0,remaining));let label=weeks===1?'大会まで':`第${w}週`;let content=remaining<=7?'大会に向けた調整。練習量を抑え、疲労を残さない':remaining<=14?'動きの質と技術確認。回復日を確保し、無理に追い込まない':remaining<=28?'種目特有の技術とスピードを丁寧に積み上げる':'基礎・フォーム・課題改善を中心に、段階的に練習';html+=`<div class="card"><div class="goalrow"><b>${label}</b><span class="pill">${esc(ph[0])}</span></div><div class="muted small" style="margin-top:6px">${content}</div></div>`}
 html+=`</div></div><div class="note" style="margin-top:12px"><b>練習日の目安：週${p.days}日</b><br>チーム練習・休養日：${esc(p.notes||'未指定')}<br>練習の具体的な内容や本数は、普段の練習・指導者の方針・疲労や痛みに合わせて調整してね。痛みがある日は強度を上げず、休養や専門家への相談を優先。</div>`;return html}
-function saveGoal(){goal={event:$('goalEvent').value,current:$('current').value.trim(),target:$('target').value.trim(),deadline:$('deadline').value,reason:$('reason').value.trim()};put('goal',goal);render();alert('目標を保存したよ！')}
-function saveLog(){let l={date:$('logDate').value,water:$('water').value,food:$('food').value.trim(),fatigue:$('fatigue').value,memo:$('conditionMemo').value.trim()};logs.unshift(l);put('logs',logs);['water','food','fatigue','conditionMemo'].forEach(id=>document.getElementById(id).value='');render();alert('ログを保存したよ！')}
-function syncVideos(){let a=$('playerA'),b=$('playerB');if(a.paused||b.paused){a.play().catch(()=>{});b.play().catch(()=>{})}else{a.pause();b.pause()}}
-function loadVideo(input,player){input.addEventListener('change',()=>{if(input.files[0])player.src=URL.createObjectURL(input.files[0])})}loadVideo($('videoA'),$('playerA'));loadVideo($('videoB'),$('playerB'));
-function render(){let sprint=records.filter(r=>r.event==='100m').map(r=>Number(r.mark)).filter(Number.isFinite),lj=records.filter(r=>r.event==='走幅跳').map(r=>Number(r.mark)).filter(Number.isFinite),tj=records.filter(r=>r.event==='三段跳').map(r=>Number(r.mark)).filter(Number.isFinite);$('dash100').textContent=sprint.length?Math.min(...sprint).toFixed(2):'--.--';$('dashLJ').textContent=lj.length?Math.max(...lj).toFixed(2):'-.--';$('dashTJ').textContent=tj.length?Math.max(...tj).toFixed(2):'-.--';$('dashCount').textContent=records.length;$('recordCount').textContent=records.length+'件';$('recordList').innerHTML=records.length?records.map((r,i)=>`<div class="card record"><div><b>${esc(r.event)}</b><div class="muted small">${esc(r.date||'日付未設定')} · ${esc(r.meet||'大会名なし')} · 風 ${esc(r.wind||'不明')}</div><div class="muted small">${esc(r.memo||'')}</div></div><div style="text-align:right"><strong>${esc(r.mark)}</strong><div><button class="btn" onclick="delRecord(${i})">削除</button></div></div></div>`).join(''):'<div class="empty">まだ記録がありません。</div>';let vals=records.slice(0,8).reverse();$('trend').innerHTML=vals.length?vals.map((r,i)=>`<div class="bar" style="height:${Math.max(12,Math.min(100,30+i*9))}%" data-label="${esc(r.event)}"></div>`).join(''):'<div class="muted small">記録データがまだありません</div>';let goalHtml=goal?`<div class="goalrow"><div><div class="muted small">${esc(goal.event)}</div><b>${esc(goal.current||'未入力')} → ${esc(goal.target||'未入力')}</b></div><span class="pill">${esc(goal.deadline||'期限未設定')}</span></div><div class="progress"><i style="width:45%"></i></div><div class="muted small">目標の理由：${esc(goal.reason||'未入力')}</div>`:'<div class="muted small">目標を登録すると、ここに表示されます。</div><button class="btn" onclick="show(\'training\')">目標を登録する ＋</button>';$('goalSummary').innerHTML=goalHtml;$('goalDetail').innerHTML=goal?`<div class="eyebrow">${esc(goal.event)}</div><h2 style="margin:6px 0 12px">${esc(goal.current||'--')} → ${esc(goal.target||'--')}</h2><p class="muted">期限：${esc(goal.deadline||'未設定')}</p><p>目標の理由：${esc(goal.reason||'未入力')}</p><hr style="border-color:var(--line)"><b>取り組みの整理</b><ol class="muted"><li>現在の記録と動画を確認し、改善したい点を1〜2個に絞る</li><li>基礎技術・加速や助走など、種目に合った練習を段階的に行う</li><li>練習記録と体調を振り返り、負荷を調整する</li><li>定期的に記録会などで変化を確認する</li></ol>`:'目標を登録すると、ここに表示されます。';$('meetSummary').innerHTML=meetPlan?`<div class="goalrow"><div><div class="muted small">${esc(meetPlan.name||meetPlan.event)}</div><b>${esc(meetPlan.event)} · ${esc(meetPlan.date)}</b></div><strong style="font-size:25px;color:var(--cyan)">あと${daysUntil(meetPlan.date)}日</strong></div><button class="btn" style="margin-top:10px" onclick="show('training')">逆算プランを見る</button>`:'<div class="muted small">大会を登録すると、残り日数と準備計画が表示されます。</div><button class="btn" onclick="show(\'training\')">大会を登録する ＋</button>'; $('meetPlanOutput').innerHTML=meetPlan?buildMeetPlan(meetPlan):'<div class="muted small">大会情報を登録すると、ここに逆算プランが表示されます。</div>';$('logList').innerHTML=logs.length?logs.slice(0,8).map(l=>`<div class="card"><div class="goalrow"><b>${esc(l.date||'日付未設定')}</b><span class="pill">水分 ${esc(l.water||'--')} mL</span></div><div class="muted small">疲労感：${esc(l.fatigue||'--')} / 5</div><div class="small">${esc(l.food||'')}${l.memo?' · '+esc(l.memo):''}</div></div>`).join(''):'<div class="empty">まだログがありません。</div>'}
-function delRecord(i){if(confirm('この記録を削除する？')){records.splice(i,1);put('records',records);render()}}function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-const today=new Date().toISOString().slice(0,10);$('date').value=today;$('logDate').value=today;$('meetPlanDate').min=today;if(meetPlan){$('meetPlanName').value=meetPlan.name||'';$('meetPlanEvent').value=meetPlan.event;$('meetPlanDate').value=meetPlan.date;$('meetPlanCurrent').value=meetPlan.current||'';$('meetPlanTarget').value=meetPlan.target||'';$('meetPlanDays').value=String(meetPlan.days||3);$('meetPlanNotes').value=meetPlan.notes||'';}render();
-</script></body></html>
+function saveGoal(){
+  goal={
+    event:$('goalEvent').value,
+    current:$('current').value.trim(),
+    target:$('target').value.trim(),
+    deadline:$('deadline').value,
+    reason:$('reason').value.trim()
+  };
+  put('goal',goal);
+  render();
+  alert('目標を保存したよ！');
+}
+
+function saveLog(){
+  let l={
+    date:$('logDate').value,
+    water:$('water').value,
+    food:$('food').value.trim(),
+    fatigue:$('fatigue').value,
+    memo:$('conditionMemo').value.trim()
+  };
+  logs.unshift(l);
+  put('logs',logs);
+  ['water','food','fatigue','conditionMemo'].forEach(id=>{
+    document.getElementById(id).value='';
+  });
+  render();
+  alert('ログを保存したよ！');
+}
+
+function syncVideos(){
+  let a=$('playerA'),b=$('playerB');
+  if(a.paused||b.paused){
+    a.play().catch(()=>{});
+    b.play().catch(()=>{});
+  }else{
+    a.pause();
+    b.pause();
+  }
+}
+function analyzePersonalVideo(){
+
+  const event=$('videoEvent').value;
+  const target=$('videoTarget').value;
+  const focus=$('videoFocus').value;
+
+  const fileA=$('videoA').files[0];
+  const fileB=$('videoB').files[0];
+
+  const output=$('personalVideoAnalysis');
+
+  if((target==='A'&&!fileA)||
+     (target==='B'&&!fileB)||
+     (target==='both'&&(!fileA||!fileB))){
+    output.innerHTML=
+      '<p>分析する動画を選択してください。</p>';
+    return;
+  }
+
+  const eventNames={
+    '100m':'100m',
+    '走幅跳':'走幅跳',
+    '三段跳':'三段跳'
+  };
+
+  const focusNames={
+    all:'全体的な動き',
+    start:'スタート・助走',
+    posture:'姿勢・身体の使い方',
+    contact:'接地・踏切',
+    rhythm:'動作のリズム'
+  };
+
+  let html=`
+    <div class="card" style="margin-top:12px">
+      <div class="eyebrow">PERSONAL ANALYSIS REPORT</div>
+      <h3 style="color:var(--cyan)">分析設定</h3>
+      <p>種目：${eventNames[event]}</p>
+      <p>対象：${target==='both'?'動画A・B':target==='A'?'動画A':'動画B'}</p>
+      <p>確認項目：${focusNames[focus]}</p>
+      <hr>
+      <h3>個人データとの連携</h3>
+  `;
+
+  const eventRecords=records
+    .filter(r=>r.event===event)
+    .map(r=>Number(r.mark))
+    .filter(n=>Number.isFinite(n)&&n>0);
+
+  if(eventRecords.length){
+    const best=event==='100m'
+      ?Math.min(...eventRecords)
+      :Math.max(...eventRecords);
+
+    const unit=event==='100m'?'秒':'m';
+
+    html+=`
+      <p>登録済み自己ベスト：
+      <strong style="color:var(--cyan)">
+      ${best.toFixed(2)}${unit}
+      </strong></p>
+    `;
+  }else{
+    html+='<p>大会記録がまだ登録されていません。</p>';
+  }
+
+  html+=`
+      <h3>次の分析ステップ</h3>
+      <p>動画の姿勢・動作を解析するエンジンは未接続です。</p>
+      <p class="muted small">
+      現在は動画の選択と個人データの読み込みまで確認できています。
+      映像の内容を自動判定した結果ではありません。
+      </p>
+    </div>
+  `;
+
+  output.innerHTML=html;
+}
+function loadVideo(input,player){
+  input.addEventListener('change',()=>{
+    if(input.files[0]){
+      player.src=URL.createObjectURL(input.files[0]);
+    }
+  });
+}
+
+loadVideo($('videoA'),$('playerA'));
+loadVideo($('videoB'),$('playerB'));
+function render()
+{
+
+  let sprint=records.filter(r=>r.event==='100m')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  let lj=records.filter(r=>r.event==='走幅跳')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  let tj=records.filter(r=>r.event==='三段跳')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  $('dash100').textContent=sprint.length?Math.min(...sprint).toFixed(2):'--.--';
+  $('dashLJ').textContent=lj.length?Math.max(...lj).toFixed(2):'-.--';
+  $('dashTJ').textContent=tj.length?Math.max(...tj).toFixed(2):'-.--';
+  $('dashCount').textContent=records.length;
+
+  $('recordCount').textContent=records.length+'件';
+
+  $('recordList').innerHTML=records.length
+    ?records.map((r,i)=>`
+      <div class="card record">
+        <div>
+          <b>${esc(r.event)}</b>
+          <div class="muted small">
+            ${esc(r.date||'日付未設定')} · ${esc(r.meet||'大会名なし')} · 風 ${esc(r.wind||'不明')}
+          </div>
+          <div class="muted small">${esc(r.memo||'')}</div>
+        </div>
+        <div style="text-align:right">
+          <strong>${esc(r.mark)}</strong>
+          <div><button class="btn" onclick="delRecord(${i})">削除</button></div>
+        </div>
+      </div>
+    `).join('')
+    :'<div class="empty">まだ記録がありません。</div>';
+
+  let vals=records.slice(0,8).reverse();
+
+  $('trend').innerHTML=vals.length
+    ?vals.map((r,i)=>`
+      <div class="bar"
+        style="height:${Math.max(12,Math.min(100,30+i*9))}%"
+        data-label="${esc(r.event)}">
+      </div>
+    `).join('')
+    :'<div class="muted small">記録データがまだありません</div>';
+
+  let goalHtml=goal
+    ?`
+      <div class="goalrow">
+        <div>
+          <div class="muted small">${esc(goal.event)}</div>
+          <b>${esc(goal.current||'未入力')} → ${esc(goal.target||'未入力')}</b>
+        </div>
+        <span class="pill">${esc(goal.deadline||'期限未設定')}</span>
+      </div>
+      <div class="progress"><i style="width:45%"></i></div>
+      <div class="muted small">目標の理由：${esc(goal.reason||'未入力')}</div>
+    `
+    :`
+      <div class="muted small">目標を登録すると、ここに表示されます。</div>
+      <button class="btn" onclick="show('training')">目標を登録する ＋</button>
+    `;
+
+  $('goalSummary').innerHTML=goalHtml;
+
+  $('goalDetail').innerHTML=goal
+    ?`
+      <div class="eyebrow">${esc(goal.event)}</div>
+      <h2 style="margin:6px 0 12px">
+        ${esc(goal.current||'--')} → ${esc(goal.target||'--')}
+      </h2>
+      <p class="muted">期限：${esc(goal.deadline||'未設定')}</p>
+      <p>目標の理由：${esc(goal.reason||'未入力')}</p>
+      <hr style="border-color:var(--line)">
+      <b>取り組みの整理</b>
+      <ol class="muted">
+        <li>現在の記録と動画を確認し、改善したい点を1〜2個に絞る</li>
+        <li>基礎技術・加速や助走など、種目に合った練習を段階的に行う</li>
+        <li>練習記録と体調を振り返り、負荷を調整する</li>
+        <li>定期的に記録会などで変化を確認する</li>
+      </ol>
+    `
+    :'目標を登録すると、ここに表示されます。';
+
+  // 大会一覧
+  let sortedMeets=meetPlans.slice().sort((a,b)=>a.date.localeCompare(b.date));
+
+$('meetSummary').innerHTML=sortedMeets.length
+  ?sortedMeets.map(p=>`
+    <div class="card" style="margin-bottom:10px;cursor:pointer"
+         onclick="openMeetPlan(${Number(p.id)})">
+      <div class="goalrow">
+        <div>
+          <div class="muted small">${esc(p.name||p.event)}</div>
+          <b>${esc(p.event)} · ${esc(p.date)}</b>
+        </div>
+        <strong style="color:var(--cyan)">
+          ${daysUntil(p.date)<0?'終了':`あと${daysUntil(p.date)}日`}
+        </strong>
+      </div>
+      <div class="muted small" style="margin-top:8px">プランの詳細を見る →</div>
+    </div>
+  `).join('')
+  :'<div class="muted small">大会を登録すると、ここに一覧表示されます。</div>';
+
+$('meetSummary').innerHTML+=`
+  <button class="btn" style="margin-top:10px" onclick="show('training')">
+    大会を登録・確認する ＋
+  </button>
+`;
+
+let selectedMeet=meetPlans.find(p=>p.id===openMeetPlanId);
+let nextMeet=selectedMeet||sortedMeets.find(p=>daysUntil(p.date)>=0);
+
+$('meetPlanOutput').innerHTML=nextMeet
+  ?buildMeetPlan(nextMeet)
+  :'<div class="muted small">大会情報を登録すると、ここに逆算プランが表示されます。</div>';
+
+  
+  // コンディションログ
+  $('logList').innerHTML=logs.length
+    ?logs.slice(0,8).map(l=>`
+      <div class="card">
+        <div class="goalrow">
+          <b>${esc(l.date||'日付未設定')}</b>
+          <span class="pill">水分 ${esc(l.water||'--')} mL</span>
+        </div>
+        <div class="muted small">疲労感：${esc(l.fatigue||'--')} / 5</div>
+        <div class="small">${esc(l.food||'')}${l.memo?' · '+esc(l.memo):''}</div>
+      </div>
+    `).join('')
+    :'<div class="empty">まだログがありません。</div>';
+updateCoachStats();
+}
+function updateCoachStats(){
+  $('coachRecordCount').textContent=records.length;
+
+  let upcoming=meetPlans.filter(p=>daysUntil(p.date)>=0);
+
+  $('coachMeetCount').textContent=upcoming.length;
+}
+function generateTrainingMenu(){
+
+  const event=$('trainingEvent').value;
+  const condition=$('trainingCondition').value;
+  const purpose=$('trainingPurpose').value;
+
+  let title='';
+  let menu=[];
+
+  if(condition==='poor'){
+    title='回復を優先する日';
+    menu=[
+      '強度の高いスプリントや跳躍練習は行わない。',
+      '痛みがある場合は運動を中止し、必要に応じて指導者や専門家に相談する。',
+      '水分・食事・睡眠を整え、回復を優先する。'
+    ];
+  }else if(condition==='tired'){
+    title='疲労に配慮した軽めのメニュー';
+    menu=[
+      'ウォーキングなど無理のない軽い運動。',
+      '痛みのない範囲で動的ストレッチ。',
+      '疲労が残る場合は練習を切り上げて休養する。'
+    ];
+  }else{
+
+    const menus={
+      '100m':{
+        speed:[
+          'ウォームアップ：軽いジョグと動的ストレッチ。',
+          '加速動作：余裕のある短い加速走を少ない本数で確認。',
+          'フォーム確認：腕振りと姿勢を動画で振り返る。',
+          'クールダウン：軽い歩行とストレッチ。'
+        ],
+        technique:[
+          'ウォームアップ：動的ストレッチ。',
+          'ドリル：姿勢と腕振りを丁寧に確認。',
+          'スタート動作：無理のない範囲で動きを確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        power:[
+          'ウォームアップ：十分に体を温める。',
+          '基礎動作：姿勢を保ったスクワットなどを無理のない範囲で行う。',
+          '動作確認：左右のバランスをチェック。',
+          'クールダウン：軽い歩行。'
+        ],
+        recovery:[
+          '軽いウォーキング。',
+          '股関節・足首周辺の動的ストレッチ。',
+          '睡眠と食事を整える。'
+        ]
+      },
+      '走幅跳':{
+        speed:[
+          'ウォームアップ：ジョグと動的ストレッチ。',
+          '助走確認：無理のない速度で助走リズムを確認。',
+          '踏切確認：低負荷で踏切位置を確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        technique:[
+          'ウォームアップ：動的ストレッチ。',
+          '助走：歩数とリズムを確認。',
+          '踏切：安全な低負荷ドリルで動きを確認。',
+          '着地：姿勢とバランスを確認。'
+        ],
+        power:[
+          'ウォームアップ：十分に体を温める。',
+          '基礎動作：スクワットなどを無理のない範囲で行う。',
+          'バランス：片脚での安定性を確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        recovery:[
+          '軽いウォーキング。',
+          '股関節・足首周辺の可動域確認。',
+          '疲労に応じて休養する。'
+        ]
+      },
+      '三段跳':{
+        speed:[
+          'ウォームアップ：ジョグと動的ストレッチ。',
+          '助走：無理のない速度でリズムを確認。',
+          '動作確認：ホップ・ステップ・ジャンプのつながりを低負荷で確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        technique:[
+          'ウォームアップ：動的ストレッチ。',
+          'リズム：低負荷で各局面のバランスを確認。',
+          '姿勢：上体の安定性を確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        power:[
+          'ウォームアップ：十分に体を温める。',
+          '基礎動作：無理のない範囲で下半身の基礎運動。',
+          'バランス：左右の安定性を確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        recovery:[
+          '軽いウォーキング。',
+          '股関節・足首周辺の動的ストレッチ。',
+          '疲労に応じて休養する。'
+        ]
+      },
+      '短距離・跳躍複合':{
+        speed:[
+          'ウォームアップ：ジョグと動的ストレッチ。',
+          '短い加速動作を余裕のある範囲で確認。',
+          '跳躍の助走リズムを低負荷で確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        technique:[
+          'ウォームアップ：動的ストレッチ。',
+          '短距離の姿勢・腕振りを確認。',
+          '跳躍の助走とバランスを確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        power:[
+          'ウォームアップ：十分に体を温める。',
+          '基礎的な下半身運動を無理のない範囲で行う。',
+          '体幹とバランスを確認。',
+          'クールダウン：軽い歩行。'
+        ],
+        recovery:[
+          '軽いウォーキング。',
+          '全身の動的ストレッチ。',
+          '睡眠と食事を整える。'
+        ]
+      }
+    };
+
+    const purposeNames={
+      speed:'スピード・加速',
+      technique:'技術・フォーム',
+      power:'跳躍・パワー',
+      recovery:'回復・コンディショニング'
+    };
+
+    title=event+'｜'+purposeNames[purpose];
+    menu=menus[event][purpose];
+  }
+
+  let html='<div class="card">';
+  html+='<h3 style="color:var(--cyan)">'+title+'</h3>';
+  html+='<ol>';
+
+  menu.forEach(item=>{
+    html+='<li style="margin-bottom:10px">'+item+'</li>';
+  });
+
+  html+='</ol>';
+  html+='<p class="muted small">これは登録した条件に基づく練習候補です。実際の練習は指導者の方針や当日の体調に合わせて調整してください。</p>';
+  html+='</div>';
+
+  $('trainingMenuOutput').innerHTML=html;
+}
+
+
+function analyzeEventAdvice(){ 
+const event=$('coachEvent').value;
+  const advice={
+    '100m':{
+      title:'100m｜スプリントアドバイス',
+      points:[
+        'スタート：無理に上体を起こさず、自然な加速を意識する。',
+        '加速：地面を押す感覚と、少しずつ姿勢を起こす動きを確認する。',
+        '中盤：肩や顔に力を入れすぎず、リラックスした腕振りを意識する。',
+        '振り返り：スタート・加速・中盤のどこで動きが変わるか動画で確認する。'
+      ]
+    },
+    '走幅跳':{
+      title:'走幅跳｜ジャンプアドバイス',
+      points:[
+        '助走：毎回同じリズムで踏切位置に近づけているか確認する。',
+        '踏切：助走のスピードを保ちながら、自然に踏み切る。',
+        '空中動作：上体のバランスを保ち、着地まで姿勢を整える。',
+        '振り返り：助走の歩数・踏切位置・着地を分けて動画で確認する。'
+      ]
+    },
+    '三段跳':{
+      title:'三段跳｜ジャンプアドバイス',
+      points:[
+        '助走：安定したリズムで踏切に入れているか確認する。',
+        'ホップ：上体の姿勢とバランスを保つ。',
+        'ステップ：ホップからステップへのつながりを滑らかにする。',
+        'ジャンプ：最後の踏切まで無理なくリズムをつなぐ。'
+      ]
+    }
+  };
+
+  const selected=advice[event];
+
+  let html='<b>'+selected.title+'</b>';
+
+  html+='<ul>';
+
+  selected.points.forEach(point=>{
+    html+='<li style="margin-bottom:10px">'+point+'</li>';
+  });
+
+  html+='</ul>';
+
+  html+='<p class="muted small">練習では一度に多くの課題を直そうとせず、まず1つのポイントを確認しよう。疲労や痛みがある日は無理に実施しないこと。</p>';
+
+  $('coachEventAdvice').innerHTML=html;
+}
+function analyzeWeakness(){
+
+  const events=[
+    {name:'100m',key:'100m',unit:'秒',better:'lower'},
+    {name:'走幅跳',key:'走幅跳',unit:'m',better:'higher'},
+    {name:'三段跳',key:'三段跳',unit:'m',better:'higher'}
+  ];
+
+  let html='<b>種目別・改善ポイント</b>';
+
+  events.forEach(event=>{
+
+    let data=records
+      .filter(r=>r.event===event.key)
+      .map(r=>Number(r.mark))
+      .filter(n=>Number.isFinite(n)&&n>0);
+
+    html+=`<div class="card" style="margin-top:12px">
+      <b>${event.name}</b>`;
+
+    if(data.length===0){
+      html+='<p class="muted small">記録がありません。大会記録を登録してね。</p>';
+    }else{
+      let best=event.better==='lower'
+        ?Math.min(...data)
+        :Math.max(...data);
+
+      html+=`<p>自己ベスト：<strong style="color:var(--cyan)">${best.toFixed(2)}${event.unit}</strong></p>`;
+      html+=`<p class="muted small">登録記録：${data.length}件</p>`;
+
+      if(data.length<2){
+        html+='<p class="muted small">比較データが少ないため、今後の記録を追加すると成長を確認できます。</p>';
+      }else{
+        let latest=data[0];
+        let previous=data[1];
+
+        let improved=event.better==='lower'
+          ?latest<previous
+          :latest>previous;
+
+        html+=improved
+          ?'<p>直近の記録は前回より向上しています！</p>'
+          :'<p>直近の記録を振り返り、安定性や動きを確認してみましょう。</p>';
+      }
+    }
+
+    html+='</div>';
+  });
+
+  html+='<p class="muted small">※記録だけでは技術的な弱点は断定できません。練習内容や動画も合わせて確認しましょう。</p>';
+
+  $('coachWeakness').innerHTML=html;
+}
+function analyzePerformance(){
+  let sprint=records.filter(r=>r.event==='100m')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  let lj=records.filter(r=>r.event==='走幅跳')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  let tj=records.filter(r=>r.event==='三段跳')
+    .map(r=>Number(r.mark)).filter(Number.isFinite);
+
+  let html='<b>記録データの分析</b>';
+
+  html+='<p>登録大会記録：'+records.length+'件</p>';
+
+  if(sprint.length){
+    html+='<p>100m自己ベスト：'+Math.min(...sprint).toFixed(2)+'秒</p>';
+  }
+
+  if(lj.length){
+    html+='<p>走幅跳自己ベスト：'+Math.max(...lj).toFixed(2)+'m</p>';
+  }
+
+  if(tj.length){
+    html+='<p>三段跳自己ベスト：'+Math.max(...tj).toFixed(2)+'m</p>';
+  }
+
+  if(!records.length){
+    html+='<p>まずは大会記録を登録してね。</p>';
+  }else{
+    html+='<p>記録を継続して登録すると、今後の成長を比較しやすくなるよ。</p>';
+  }
+
+  $('coachAnalysis').innerHTML=html;
+}
+
+function analyzeCondition(){
+  let recent=logs.slice(0,7);
+
+  let html='<b>最近のコンディション</b>';
+
+  if(!recent.length){
+    html+='<p>まだ体調記録がありません。Conditionから記録してね。</p>';
+  }else{
+    let fatigue=recent
+      .map(l=>Number(l.fatigue))
+      .filter(n=>n>=1&&n<=5);
+
+    let avg=fatigue.length
+      ?(fatigue.reduce((a,b)=>a+b,0)/fatigue.length).toFixed(1)
+      :'データなし';
+
+    html+='<p>確認した記録：'+recent.length+'件</p>';
+    html+='<p>疲労感の平均：'+avg+' / 5</p>';
+    html+='<p>記録を振り返り、疲労が強い日は練習量を調整しよう。</p>';
+  }
+
+  $('coachCondition').innerHTML=html;
+}
+
+function analyzeMeet(){
+  let upcoming=meetPlans
+    .filter(p=>daysUntil(p.date)>=0)
+    .sort((a,b)=>a.date.localeCompare(b.date));
+
+  let html='<b>大会・目標の確認</b>';
+
+  if(!upcoming.length){
+    html+='<p>予定されている大会はありません。Trainingから大会を登録してね。</p>';
+  }else{
+    upcoming.forEach(p=>{
+      html+=`
+        <div class="card" style="margin-top:10px">
+          <b>${esc(p.name||'大会')}</b>
+          <p>${esc(p.event)}</p>
+          <strong style="color:var(--cyan)">あと${daysUntil(p.date)}日</strong>
+          <p class="muted small">大会日：${esc(p.date)}</p>
+          <p class="small">現在：${esc(p.current||'未入力')}</p>
+          <p class="small">目標：${esc(p.target||'未入力')}</p>
+        </div>
+      `;
+    });
+  }
+
+  $('coachMeet').innerHTML=html;
+}
+
+function delRecord(i){
+  if(confirm('この記録を削除する？')){
+    records.splice(i,1);
+    put('records',records);
+    render();
+  }
+}
+
+function esc(s){
+  return String(s??'').replace(/[&<>"']/g,c=>({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c]));
+}
+
+// 初期設定
+const today=new Date().toISOString().slice(0,10);
+
+$('date').value=today;
+$('logDate').value=today;
+$('meetPlanDate').min=today;
+
+// 保存済み大会の情報をフォームに復元
+meetPlan=meetPlans.slice().sort((a,b)=>a.date.localeCompare(b.date))[0]||null;
+
+if(meetPlan){
+  $('meetPlanName').value=meetPlan.name||'';
+  $('meetPlanEvent').value=meetPlan.event;
+  $('meetPlanDate').value=meetPlan.date;
+  $('meetPlanCurrent').value=meetPlan.current||'';
+  $('meetPlanTarget').value=meetPlan.target||'';
+  $('meetPlanDays').value=String(meetPlan.days||3);
+  $('meetPlanNotes').value=meetPlan.notes||'';
+}
+
+render();</script></body></html>
